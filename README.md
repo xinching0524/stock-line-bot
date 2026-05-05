@@ -69,7 +69,7 @@ your-repo/
 下方為股票 LINE Bot 的實際運行對話截圖：
 
 - **LINE Bot 對話實測**
-  <br>![LINE Bot 對話實測](screenshots/result.png)
+  <br>![LINE Bot 對話實測](screenshots/picture.jpg)
 
 ---
 
