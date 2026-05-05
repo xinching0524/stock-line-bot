@@ -1,0 +1,88 @@
+:root {
+    --bg-dark: #120e0a;
+    --gold: #d4af37;
+    --gold-dim: #997a15;
+    --red: #8b0000;
+    --text-light: #f4ecd8;
+    --glass-bg: rgba(20, 15, 10, 0.7);
+    --glass-border: rgba(212, 175, 55, 0.3);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Serif TC', serif; }
+
+body {
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at center, #2a1c12 0%, var(--bg-dark) 100%);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.screen { display: none; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease; }
+.screen.active { display: flex; opacity: 1; }
+
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+h1, h2 { color: var(--gold); margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+p { margin-bottom: 1.5rem; color: #ccc; }
+
+input[type="text"] {
+    width: 100%; padding: 12px; margin-bottom: 1.5rem; border: 1px solid var(--gold-dim);
+    background: rgba(0,0,0,0.5); color: var(--gold); border-radius: 4px; font-size: 1rem;
+    outline: none; transition: border-color 0.3s;
+}
+input[type="text"]:focus { border-color: var(--gold); }
+
+button {
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold)); color: #111;
+    border: none; padding: 12px 24px; font-size: 1.1rem; font-weight: bold;
+    border-radius: 4px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+}
+button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
+
+header { width: 100%; max-width: 800px; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid var(--glass-border); margin-bottom: 2rem; }
+nav { display: flex; gap: 1rem; }
+.nav-btn { background: transparent; color: var(--text-light); padding: 8px 16px; border-bottom: 2px solid transparent; border-radius: 0; }
+.nav-btn.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+.nav-btn:hover { background: transparent; color: var(--gold); transform: none; box-shadow: none; }
+#logout-btn { background: transparent; border: 1px solid var(--text-light); color: var(--text-light); font-size: 0.9rem; padding: 6px 12px; }
+
+main { width: 100%; max-width: 800px; padding: 0 1rem; margin-bottom: 4rem;}
+.tab-section { display: none; animation: fadeIn 0.4s ease; }
+.tab-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.glass-panel {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    padding: 2.5rem; border-radius: 12px; text-align: center;
+}
+
+.hidden { display: none !important; }
+
+.poem-card { margin-top: 2rem; border: 2px solid var(--gold-dim); padding: 2rem; position: relative; background: rgba(0,0,0,0.4); }
+.fortune-badge { position: absolute; top: -15px; right: -15px; background: var(--red); color: var(--gold); padding: 10px; border-radius: 50%; font-weight: bold; border: 2px solid var(--gold); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+.poem-content-wrapper {display: flex; justify-content: center; width: 100%;}
+.poem-content { font-size: 1.5rem; line-height: 2; margin: 1.5rem 0; color: var(--gold); text-align: center; writing-mode: vertical-rl; min-height: 180px; letter-spacing: 5px;}
+.divider { height: 1px; background: var(--glass-border); margin: 1.5rem 0; }
+.poem-explanation { font-size: 1.1rem; line-height: 1.6; text-align: left; }
+
+.list-container { max-height: 400px; overflow-y: auto; text-align: left; }
+.history-item { padding: 1rem; border-bottom: 1px solid var(--glass-border); }
+.history-item:last-child { border-bottom: none; }
+.history-date { font-size: 0.8rem; color: #888; }
+.history-msg { margin-top: 0.5rem; color: var(--text-light); }
+.history-type { display: inline-block; padding: 2px 8px; border-radius: 4px; background: rgba(212, 175, 55, 0.2); color: var(--gold); font-size: 0.8rem; margin-right: 8px;}
+
+.donation-options { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+.amount-btn { background: transparent; border: 1px solid var(--gold-dim); color: var(--text-light); }
+.amount-btn.active { background: var(--gold-dim); color: #111; }
+.success-msg { color: #4caf50; margin-top: 1rem; font-weight: bold; }

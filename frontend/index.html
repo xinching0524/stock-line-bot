@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上宮廟抽籤系統 | 祈願與指引</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="login-screen" class="screen active">
+        <div class="glass-container">
+            <h1>線上宮廟</h1>
+            <p id="auth-hint">請登入或註冊，以便神明指引</p>
+            <input type="text" id="username" placeholder="信士 / 信女 姓名">
+            <input type="password" id="password" placeholder="密碼">
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="login-btn">登入</button>
+                <button id="register-btn" style="background: transparent; border: 1px solid var(--gold-dim); color: var(--gold);">註冊</button>
+            </div>
+            <p id="auth-error" class="hidden error-msg" style="color: var(--red); margin-top: 10px; font-weight: bold;"></p>
+        </div>
+    </div>
+    
+    <div id="main-screen" class="screen">
+        <header>
+            <div class="user-info">信士：<span id="display-name"></span></div>
+            <nav>
+                <button class="nav-btn active" data-target="draw-section">求神問卜</button>
+                <button class="nav-btn" data-target="history-section">參拜紀錄</button>
+                <button class="nav-btn" data-target="donate-section">香油捐獻</button>
+            </nav>
+            <button id="logout-btn">離開</button>
+        </header>
+        
+        <main>
+            <!-- Draw Section -->
+            <section id="draw-section" class="tab-section active">
+                <div class="glass-panel">
+                    <h2>誠心求籤</h2>
+                    <p>請在心中默念所求之事後點擊求籤</p>
+                    <input type="text" id="question" placeholder="今日想求問什麼呢？（選填）">
+                    <button id="draw-btn" class="primary-btn">搖動籤筒</button>
+                    
+                    <div id="poem-result" class="hidden">
+                        <div class="poem-card">
+                            <h3 id="poem-title"></h3>
+                            <div class="fortune-badge" id="poem-type"></div>
+                            <div class="poem-content-wrapper"><p class="poem-content" id="poem-content"></p></div>
+                            <div class="divider"></div>
+                            <p class="poem-explanation" id="poem-explanation"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="history-section" class="tab-section">
+                <div class="glass-panel">
+                    <h2>參拜與歷史紀錄</h2>
+                    <div id="history-list" class="list-container"></div>
+                </div>
+            </section>
+
+            <!-- Donate Section -->
+            <section id="donate-section" class="tab-section">
+                <div class="glass-panel">
+                    <h2>添香油錢</h2>
+                    <p>隨喜結緣，功德無量</p>
+                    <div class="donation-options">
+                        <button class="amount-btn active" data-amount="100">NT$ 100</button>
+                        <button class="amount-btn" data-amount="500">NT$ 500</button>
+                        <button class="amount-btn" data-amount="1000">NT$ 1000</button>
+                    </div>
+                    <input type="text" id="donate-message" placeholder="祈願項目（如：祈求闔家平安）">
+                    <button id="donate-btn" class="primary-btn">確認供奉</button>
+                    <div id="donate-success" class="hidden success-msg">感謝您的發心，已記錄捐獻！</div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
